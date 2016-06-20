@@ -4,36 +4,36 @@ namespace Ws\core;
 
 class request
 {
-	public function data()
+	public static function data()
 	{
-		$retorno['post'] = $this->post();
-		$retorno['get']  = $this->get();
+		$retorno['post'] = self::post();
+		$retorno['get']  = self::get();
 
 		return $retorno;
 	}
 
-	public function post()
+	public static function post()
 	{
 		$retorno = array();
 
 		foreach ($_POST as $key => $value) {
-			$retorno[$key] = $this->securityVar($value);
+			$retorno[$key] = self::securityVar($value);
 		}
 
 		return $retorno;
 	}
 
-	public function get()
+	public static function get()
 	{
 		$retorno['parametros'] = array();
 		foreach($_GET as $value){
-			$retorno['parametros'][] = $this->securityVar($value);
+			$retorno['parametros'][] = self::securityVar($value);
 		}
 
 		return $retorno;
 	}
 
-	public function securityVar($var)
+	public static function securityVar($var)
 	{
 		$var = addslashes($var);
 		return $var;

@@ -4,7 +4,7 @@ namespace Ws\core;
 
 class core
 {
-	function debug($var)
+	static function debug($var)
 	{
 		echo '<pre>';
 		print_r($var);
